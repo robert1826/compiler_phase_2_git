@@ -1,3 +1,4 @@
+#include "InputReader.h"
 #ifndef FIRST_FOLLOW_CALC_H
 #define FIRST_FOLLOW_CALC_H
 
@@ -8,13 +9,18 @@ class First_Follow_calc
 {
 public:
   First_Follow_calc();
+  First_Follow_calc(InputReader r);
   
-  map<string, vector<string> > getFirst;
-  map<string, vector<string> > getFollow;
+  map<string, vector<string>> getFirst();
+  map<string, vector<string>> getFollow();
   
 private:
-  map<string, vector<string> > first;
-  map<string, vector<string> > follow;
+  InputReader reader;
+  map<string, vector<string>> first;
+  map<string, vector<string>> follow;
+  
+  vector<string> calcFirst(string s);
+  vector<string> calcFollow(string s);
 };
 
 #endif // FIRST_FOLLOW_CALC_H

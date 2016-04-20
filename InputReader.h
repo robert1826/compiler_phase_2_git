@@ -5,23 +5,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class InputReader
-{
+class InputReader {
 public:
-  InputReader();
-  
-  // creates the productions map
-  // file_name is the name of the rules file
-  InputReader(string file_name); // use this one NOT the one above
- 
-  // returns the productions map
-  map<string, vector< vector<string> > > getMap();
-  bool is_terminal(string str);
-  vector<string> terminal;
-  vector<string> nonterminal;
+	InputReader();
+
+	// creates the productions map
+	// file_name is the name of the rules file
+	InputReader(string file_name); // use this one NOT the one above
+	vector<string> tokinze(string str, char* c, string origin);
+	// returns the productions map
+	map<string, vector<vector<string> > > getMap();
+	bool is_terminal(string str);
+	vector<string> terminal;
+	vector<string> nonterminal;
+	map<string, vector<string> > token_in; //NEED FIXING
+	bool is_start(string s);
+	string start;
 private:
-  map<string, vector< vector<string> > > productions;
-  
+	map<string, vector<vector<string> > > productions;
+	set<string> nonter;
+
 };
 
 #endif // INPUTREADER_H
