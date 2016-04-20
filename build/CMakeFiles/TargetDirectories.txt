@@ -1,7 +1,0 @@
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/install.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/list_install_components.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/rebuild_cache.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/compiler_phase_2.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/install/local.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/install/strip.dir
-/home/robert/Documents/kdevelop_workspace/compiler_phase_2/build/CMakeFiles/edit_cache.dir
