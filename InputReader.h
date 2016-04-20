@@ -2,6 +2,9 @@
 #ifndef INPUTREADER_H
 #define INPUTREADER_H
 
+#include <bits/stdc++.h>
+using namespace std;
+
 class InputReader
 {
 public:
@@ -12,10 +15,12 @@ public:
   InputReader(string file_name); // use this one NOT the one above
  
   // returns the productions map
-  map<string, vector<vector<string>>> getMap();
-  
+  map<string, vector< vector<string> > > getMap();
+  bool is_terminal(string str);
+  vector<string> terminal;
+  vector<string> nonterminal;
 private:
-  map<string, vector<vector<string>>> productions;
+  map<string, vector< vector<string> > > productions;
   
 };
 
