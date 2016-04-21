@@ -21,6 +21,9 @@ private:
   
   vector<string> calcFirst(string s);
   vector<string> calcFollow(string s);
+  
+  set<string> visited;
+  set<string> visited_follow;
 };
 
 #endif // FIRST_FOLLOW_CALC_H

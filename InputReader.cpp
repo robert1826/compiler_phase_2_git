@@ -24,43 +24,43 @@ InputReader::InputReader() {
 				if (def[0] == ' ') {
 					def = def.substr(1, def.length());
 				}
-				cout << name << endl;
+// 				cout << name << endl;
 				if (start == "&")
 					start = name;
 				terminal.push_back(name);
-				cout << def << endl;
+// 				cout << def << endl;
 				vector<string> v = tokinze(def, "|", name);
 
 				for (int i = 0; i < v.size(); ++i) {
 					vector<string> vv = tokinze(v[i], " ", name);
 					productions[name].push_back(vv);
 				}
-				cout << endl;
+// 				cout << endl;
 			}
 		}
 		myfile.close();
 		for (string s : nonter) {
 			nonterminal.push_back(s);
-			cout << s << endl;
+// 			cout << s << endl;
 		}
 		cout << endl;
 		for (auto s : terminal) {
-			cout << s << endl;
+// 			cout << s << endl;
 		}
 		cout << endl;
 		vector<string> vvv = token_in["SIMPLE_EXPRESSION"];
 		for (auto s : vvv) {
-			cout << s << endl;
+// 			cout << s << endl;
 		}
 	}
-	cout << "============================" << endl;
+// 	cout << "============================" << endl;
 	vector<vector<string> > vv = productions["SIMPLE_EXPRESSION"];
 	for (int i = 0; i < vv.size(); ++i) {
 		vector<string> v = vv[i];
 		for (int j = 0; j < v.size(); ++j) {
-			cout << v[j] << endl;
+// 			cout << v[j] << endl;
 		}
-		cout << endl;
+// 		cout << endl;
 	}
 }
 
@@ -111,4 +111,6 @@ bool InputReader::is_start(string s) {
 	return false;
 }
 
-map<string, vector<vector<string> > > InputReader::getMap(){}
+map<string, vector<vector<string> > > InputReader::getMap(){
+  return this -> productions;
+}
