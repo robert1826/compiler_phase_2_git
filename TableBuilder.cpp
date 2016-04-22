@@ -120,7 +120,7 @@ bool TableBuilder:: buildTable(First_Follow_calc f,InputReader in)
                                     if(fir.compare(t)==0)
                                     {
                                         if (cell.size()==0)
-                                            cell=termi;
+                                            cell=v;
                                         else
                                         {
                                             cout<<"2.error grammar is ambiguous\n";
