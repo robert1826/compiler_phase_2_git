@@ -43,11 +43,11 @@ InputReader::InputReader() {
 			nonterminal.push_back(s);
 // 			cout << s << endl;
 		}
-		cout << endl;
+// 		cout << endl;
 		for (auto s : terminal) {
 // 			cout << s << endl;
 		}
-		cout << endl;
+// 		cout << endl;
 		vector<string> vvv = token_in["SIMPLE_EXPRESSION"];
 		for (auto s : vvv) {
 // 			cout << s << endl;

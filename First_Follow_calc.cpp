@@ -78,6 +78,7 @@ vector<string> First_Follow_calc::calcFirst(string s){
 	if(i == EPS)
 	  found_eps = 1;
       }
+      token_ind++;
     }
     
 //     vector<string> cur_next = calcFirst(n_next[0]);
