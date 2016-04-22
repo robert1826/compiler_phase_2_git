@@ -27,7 +27,7 @@ InputReader::InputReader() {
 // 				cout << name << endl;
 				if (start == "&")
 					start = name;
-				terminal.push_back(name);
+				nonterminal.push_back(name);
 // 				cout << def << endl;
 				vector<string> v = tokinze(def, "|", name);
 
@@ -40,28 +40,32 @@ InputReader::InputReader() {
 		}
 		myfile.close();
 		for (string s : nonter) {
-			nonterminal.push_back(s);
+			terminal.push_back(s);
 // 			cout << s << endl;
 		}
 // 		cout << endl;
 		for (auto s : terminal) {
 // 			cout << s << endl;
 		}
-// 		cout << endl;
+		/*
+		cout << endl;
 		vector<string> vvv = token_in["SIMPLE_EXPRESSION"];
 		for (auto s : vvv) {
-// 			cout << s << endl;
+			cout << s << endl;
 		}
+		*/
 	}
 // 	cout << "============================" << endl;
+	/*
 	vector<vector<string> > vv = productions["SIMPLE_EXPRESSION"];
 	for (int i = 0; i < vv.size(); ++i) {
 		vector<string> v = vv[i];
 		for (int j = 0; j < v.size(); ++j) {
-// 			cout << v[j] << endl;
+ 			cout << v[j] << endl;
 		}
-// 		cout << endl;
+ 		cout << endl;
 	}
+	*/
 }
 
 vector<string> InputReader::tokinze(string str, char* c, string origin) {

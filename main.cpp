@@ -2,14 +2,20 @@
 #include <bits/stdc++.h>
 #include "InputReader.h"
 #include "First_Follow_calc.h"
+#include "TableBuilder.h"
 using namespace std;
 
 int main ( int argc, char **argv ) {
     InputReader r;
-    First_Follow_calc calc ( r );
-
-
-
+    First_Follow_calc calc(r); 
+    TableBuilder t;
+    t.buildTable(calc, r);
+    cout << "5alas" << endl;
+    
+//     for(int i = 0; i < 70; i++)
+//       cout << "#";
+//     cout << "robert code\n";
+//     
 //     for(auto i : r.getMap()){
 //       cout << "[" << (i.first) << "]" << "\n";
 //       for(vector<string> v : i.second){
