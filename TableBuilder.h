@@ -19,7 +19,7 @@ public:
 	TableBuilder(InputReader reader); // use this one
 
 	map <string,vector<vector<string>>> getTable();
-	void buildTable(First_Follow_calc f,InputReader in);
+	bool buildTable(First_Follow_calc f,InputReader in);
 	bool go_to_epsl(string nt, vector<string> v);
 private:
     map <string,vector<vector<string>>> table;
