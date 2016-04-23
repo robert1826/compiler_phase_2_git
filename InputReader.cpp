@@ -16,10 +16,15 @@ InputReader::InputReader() {
 
 				string def;
 				getline(ss, def);
-				size_t start_pos = def.find(" | ");
+				size_t start_pos = def.find(" |");
 				while (start_pos != std::string::npos) {
 					def.replace(start_pos, 3, "|");
-					start_pos = def.find(" | ");
+					start_pos = def.find(" |");
+				}
+				start_pos = def.find("| ");
+				while (start_pos != std::string::npos) {
+					def.replace(start_pos, 3, "|");
+					start_pos = def.find("| ");
 				}
 				if (def[0] == ' ') {
 					def = def.substr(1, def.length());
@@ -41,13 +46,13 @@ InputReader::InputReader() {
 		myfile.close();
 		for (string s : nonter) {
 			terminal.push_back(s);
-// 			cout << s << endl;
-		}
-// 		cout << endl;
-		for (auto s : terminal) {
-// 			cout << s << endl;
 		}
 		/*
+		cout << endl;
+		for (auto s : terminal) {
+			cout << s << endl;
+		}
+
 		cout << endl;
 		vector<string> vvv = token_in["SIMPLE_EXPRESSION"];
 		for (auto s : vvv) {
@@ -55,17 +60,18 @@ InputReader::InputReader() {
 		}
 		*/
 	}
-// 	cout << "============================" << endl;
 	/*
+	cout << "============================" << endl;
 	vector<vector<string> > vv = productions["SIMPLE_EXPRESSION"];
 	for (int i = 0; i < vv.size(); ++i) {
 		vector<string> v = vv[i];
 		for (int j = 0; j < v.size(); ++j) {
- 			cout << v[j] << endl;
+			cout << v[j] << endl;
 		}
- 		cout << endl;
+		cout << endl;
 	}
 	*/
+
 }
 
 vector<string> InputReader::tokinze(string str, char* c, string origin) {
@@ -115,6 +121,6 @@ bool InputReader::is_start(string s) {
 	return false;
 }
 
-map<string, vector<vector<string> > > InputReader::getMap(){
-  return this -> productions;
+map<string, vector<vector<string> > > InputReader::getMap() {
+	return this->productions;
 }
