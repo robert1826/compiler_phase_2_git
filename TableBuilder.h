@@ -21,6 +21,9 @@ public:
 	map <string,vector<vector<string>>> getTable();
 	bool buildTable(First_Follow_calc f,InputReader in);
 	bool go_to_epsl(string nt, vector<string> v);
+	void printTable(vector<string> terminals, vector<string> nonterminals);
+	void printFisrtFollow(map<string, vector<string>> first, map<string, vector<string>> follow,vector<string> nonTerminals);
+
 private:
     map <string,vector<vector<string>>> table;
 
