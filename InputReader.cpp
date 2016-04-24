@@ -4,7 +4,7 @@
 InputReader::InputReader() {
 	start = "&";
 	string line;
-	ifstream myfile("grammar.txt");
+	ifstream myfile("grammar (2).txt");
 	if (myfile.is_open()) {
 		while (getline(myfile, line)) {
 			if (line[0] == '#') {

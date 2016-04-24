@@ -3,13 +3,26 @@
 #include "InputReader.h"
 #include "First_Follow_calc.h"
 #include "TableBuilder.h"
+#include "Matcher.h"
 using namespace std;
 
 int main ( int argc, char **argv ) {
     InputReader r;
     First_Follow_calc calc(r); 
     TableBuilder t;
-    t.buildTable(calc, r);
+    if(t.buildTable(calc, r)){
+    	ifstream is("tokens.txt");
+    	 string input ;
+    	 vector<string> tokens;
+    	  while(!is.eof()){
+    	   	getline(is,input);
+    	   	tokens.push_back(input);
+        }
+   	   is.close();
+   	   vector<string> transitions;
+   	   Matcher m = Matcher(tokens ,{"(" , "" , "*" , "+" , "id" , "$"} , t.getTable(),r.start);
+    }
+
     cout << "5alas" << endl;
     
 //     for(int i = 0; i < 70; i++)

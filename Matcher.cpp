@@ -22,35 +22,43 @@ Matcher::Matcher(vector<string> tok , vector<string> trans , map< string , vecto
 	int i = 0;
 	while(i<tokens.size()){
 		string state = state_stack.top();
+		cout <<state << "  "  <<  tokens[i] << endl;
 		state_stack.pop();
 		if(state!="$"){
 			int index = get_transition_index(tokens[i]);
-			vector<string> next_states = table[state][index];
+			//vector<string> next_states = &table[state][index];
 			if(table.find(state)==table.end()){
-				if(state != tokens[i]){
+				cout << state << "____" << tokens[i] << endl;
+				if(state != tokens[i] && state!="&"){
 					output.push_back("Error: missing " + state);
 				}
-				else{
+				else if (state!="&"){
 					i++;
 				}
 			}
-			else if(next_states.size()==0){
-				state_stack.push(state);
+			else if(table[state][index].size()/*next_states.size()*/==0 || index ==-1){
 				output.push_back("Error: Illegal " + state);
-				i++;
+				if(i!=tokens.size()-1){
+					i++;
+					state_stack.push(state);
+				}
 			}
-			else if(next_states.size()==1 && next_states[0]=="sync"){
+			else if(table[state][index].size()/*next_states.size()*/==1 && table[state][index][0]/*next_states[0]*/=="synch"){
+				cout << index  << endl;
 				//synchronization : state is popped only
 			}
 			else {
 				string next = "";
-				for(int j = 0 ; j < next_states.size() ; j ++ ){
-					next += next_states[i];
-					if(j!=next_states.size()-1)next+= " ";
+				for(int j = 0 ; j < table[state][index].size()/*next_states.size()*/ ; j ++ ){
+					next += table[state][index][j]/*next_states[j]*/;
+					if(j!=table[state][index].size()/*next_states.size()*/-1)next+= " ";
 				}
-				for(int j = next_states.size()-1 ; j > -1 ; j--){
-					state_stack.push(next_states[j]);
+				output.push_back(next);
+				for(int j = table[state][index].size()/*next_states.size()*/-1 ; j > -1 ; j--){
+
+					if(state!="&")state_stack.push(table[state][index]/*next_states*/[j]);
 				}
+
 			}
 		}
 		else {
@@ -59,12 +67,12 @@ Matcher::Matcher(vector<string> tok , vector<string> trans , map< string , vecto
 			}
 			else if(state == tokens[i]){
 				output.push_back("accept");
-				print_output();
 				i = tokens.size()+1;
 			}
 		}
-		//i++;
 	}
+
+	print_output();
 }
 
 
@@ -73,9 +81,9 @@ Matcher::~Matcher() {
 }
 
 void Matcher::print_output(){
-	ifstream is("output.txt");
+	ofstream is("output.txt");
 	for(int i = 0 ; i < output.size() ; i ++){
-		cout << output[i] << endl;
+		is << output[i] << endl;
 	}
 	is.close();
 }
