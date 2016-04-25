@@ -4,11 +4,15 @@
 #include "First_Follow_calc.h"
 #include "TableBuilder.h"
 #include "Matcher.h"
+#include "Eliminate_left_recursion.h"
+
 using namespace std;
 
 int main ( int argc, char **argv ) {
     InputReader r;
-    First_Follow_calc calc(r); 
+    Eliminate_left_recursion e;
+    e.elimination(&r);
+    First_Follow_calc calc(r);
     TableBuilder t;
     if(t.buildTable(calc, r)){
     	ifstream is("tokens.txt");
@@ -29,11 +33,11 @@ int main ( int argc, char **argv ) {
     }
 
     cout << "5alas" << endl;
-    
+
 //     for(int i = 0; i < 70; i++)
 //       cout << "#";
 //     cout << "robert code\n";
-//     
+//
 //     for(auto i : r.getMap()){
 //       cout << "[" << (i.first) << "]" << "\n";
 //       for(vector<string> v : i.second){
@@ -43,7 +47,7 @@ int main ( int argc, char **argv ) {
 //       }
 //       cout << "END OF " << (i.first) << "\n\n";
 //     }
-    
+
 
 //     for ( int i = 0; i < 70; i++ )
 //         cout << "#";
@@ -56,14 +60,14 @@ int main ( int argc, char **argv ) {
 //             cout << s << " | ";
 //         cout << "\nEND OF " << ( i.first ) << "\n\n";
 //     }
-// 
-// 
+//
+//
 //     for ( int i = 0; i < 70; i++ )
 //         cout << "#";
 //     cout << endl;
 // //     cout << "robert code\n";
-// 
-// 
+//
+//
 //     map<string, vector<string>> follow_map = calc.getFollow();
 //     for ( auto i : follow_map ) {
 //         cout << "[" << ( i.first ) << "]" << "\n";

@@ -15,11 +15,14 @@ public:
 	vector<string> tokinze(string str, char* c, string origin);
 	// returns the productions map
 	map<string, vector<vector<string> > > getMap();
+	//set the production map
+	void setMap(map<string, vector<vector<string> > > p);
 	bool is_terminal(string str);
 	vector<string> terminal;
 	vector<string> nonterminal;
 	map<string, vector<string> > token_in; //NEED FIXING
 	bool is_start(string s);
+	void printing();
 	string start;
 private:
 	map<string, vector<vector<string> > > productions;
