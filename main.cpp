@@ -10,9 +10,10 @@ using namespace std;
 
 int main ( int argc, char **argv ) {
     InputReader r;
-//     Eliminate_left_recursion e;
-//     e.elimination(&r);
+    Eliminate_left_recursion e;
+    e.elimination(&r);
     First_Follow_calc calc(r);
+
 //     TableBuilder t;
 //     if(t.buildTable(calc, r)){
 //     	ifstream is("tokens.txt");
@@ -24,13 +25,17 @@ int main ( int argc, char **argv ) {
 //         }
 //    	   is.close();
 //    	   vector<string> transitions;
-//    	   Matcher m = Matcher(tokens , {"(" , "" , "*" , "+" , "id" , "$"} , t.getTable(),r.start);
+//    	   r.terminal.erase(r.terminal.begin() , r.terminal.begin()+1);
+//    	   r.terminal.push_back("$");
+//    	   for(int i = 0 ; i < r.terminal.size();i++){
+//    		   cout << "___" << r.terminal[i] << endl;
+//    	   }
+//    	   Matcher m = Matcher(tokens , r.terminal/* {"(" , ")" , "*" , "+" , "id" , "$"}*/ , t.getTable(),r.start);
 //     }
 
-//     cout << "5alas" << endl;
-
-
-
+    
+    
+    
 //     for(int i = 0; i < 70; i++)
 //       cout << "#";
 //     cout << "robert code\n";
