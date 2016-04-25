@@ -20,7 +20,12 @@ int main ( int argc, char **argv ) {
         }
    	   is.close();
    	   vector<string> transitions;
-   	   Matcher m = Matcher(tokens ,{"(" , "" , "*" , "+" , "id" , "$"} , t.getTable(),r.start);
+   	   r.terminal.erase(r.terminal.begin() , r.terminal.begin()+1);
+   	   r.terminal.push_back("$");
+   	   for(int i = 0 ; i < r.terminal.size();i++){
+   		   cout << "___" << r.terminal[i] << endl;
+   	   }
+   	   Matcher m = Matcher(tokens , r.terminal/* {"(" , ")" , "*" , "+" , "id" , "$"}*/ , t.getTable(),r.start);
     }
 
     cout << "5alas" << endl;
