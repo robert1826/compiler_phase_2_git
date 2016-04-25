@@ -10,24 +10,26 @@ using namespace std;
 
 int main ( int argc, char **argv ) {
     InputReader r;
-    Eliminate_left_recursion e;
-    e.elimination(&r);
+//     Eliminate_left_recursion e;
+//     e.elimination(&r);
     First_Follow_calc calc(r);
-    TableBuilder t;
-    if(t.buildTable(calc, r)){
-    	ifstream is("tokens.txt");
-    	 string input ;
-    	 vector<string> tokens;
-    	  while(!is.eof()){
-    	   	getline(is,input);
-    	   	tokens.push_back(input);
-        }
-   	   is.close();
-   	   vector<string> transitions;
-   	   Matcher m = Matcher(tokens ,{"(" , "" , "*" , "+" , "id" , "$"} , t.getTable(),r.start);
-    }
+//     TableBuilder t;
+//     if(t.buildTable(calc, r)){
+//     	ifstream is("tokens.txt");
+//     	 string input ;
+//     	 vector<string> tokens;
+//     	  while(!is.eof()){
+//     	   	getline(is,input);
+//     	   	tokens.push_back(input);
+//         }
+//    	   is.close();
+//    	   vector<string> transitions;
+//    	   Matcher m = Matcher(tokens , {"(" , "" , "*" , "+" , "id" , "$"} , t.getTable(),r.start);
+//     }
 
-    cout << "5alas" << endl;
+//     cout << "5alas" << endl;
+
+
 
 //     for(int i = 0; i < 70; i++)
 //       cout << "#";

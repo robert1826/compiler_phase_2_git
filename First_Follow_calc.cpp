@@ -95,17 +95,18 @@ vector<string> First_Follow_calc::calcFirst(string s){
 }
 
 vector< string > First_Follow_calc::calcFollow ( string s ) {
-  // TODO handle 3rd rule in slides
-  
 //   cout << "DEBUG : CALCULATING FOLLOW OF " << s << endl;
   
   vector<string> res;
   if(this -> reader.is_start(s))
     res.push_back("$");
   
-  
-  if(visited_follow.find(s) != visited_follow.end())
+  if(visited_follow.find(s) != visited_follow.end()){
+    if(this -> first.find(s) != this->follow.end())
+      return this->follow[s];
+    
     return vector<string>();
+  }
   visited_follow.insert(s);
   
   vector<string> from = this -> reader.token_in[s];
@@ -149,7 +150,11 @@ vector< string > First_Follow_calc::calcFollow ( string s ) {
       }
      }
   }
-      
+  
+  // for debug
+//   if(s == "EE" and follow[s].size() > 0 and res.size() == 0)
+//     cout << "OVERWRITE WITH EMPTY RES\n";
+  
   this -> follow[s] = res;
   return res;
 }
