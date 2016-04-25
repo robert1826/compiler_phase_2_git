@@ -124,3 +124,26 @@ bool InputReader::is_start(string s) {
 map<string, vector<vector<string> > > InputReader::getMap() {
 	return this->productions;
 }
+
+void InputReader::setMap(map<string, vector<vector<string> > > p) {
+    this->productions=p;
+}
+
+void InputReader::printing(){
+    for(string nt:nonterminal)
+    {
+        cout << nt << "\t";
+        vector<vector<string>> vv=productions[nt];
+        // cout << "size of productions "<< vv.size() << endl;
+        for(vector <string> v: vv )
+        {
+            for (int k=0; k<v.size(); k++)
+            {
+                cout<<v[k]<< " ";
+            }
+            cout << "\t";
+        }
+        cout << endl;
+    }
+}
+
