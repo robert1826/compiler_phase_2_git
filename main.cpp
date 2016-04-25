@@ -4,6 +4,8 @@
 #include "First_Follow_calc.h"
 #include "TableBuilder.h"
 #include "Matcher.h"
+#include "Eliminate_left_recursion.h"
+
 using namespace std;
 
 int main ( int argc, char **argv ) {
