@@ -138,8 +138,8 @@ bool TableBuilder:: buildTable(First_Follow_calc f,InputReader in)
         }
         table[nt]=row;
     }
-    printFisrtFollow(first,follow,nonTerminals);
-    printTable(terminals,nonTerminals);
+    //printFisrtFollow(first,follow,nonTerminals);
+    //printTable(terminals,nonTerminals);
 
     return true;
 }

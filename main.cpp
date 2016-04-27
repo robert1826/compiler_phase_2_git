@@ -8,34 +8,38 @@
 
 using namespace std;
 
-int main ( int argc, char **argv ) {
-    InputReader r;
-    Eliminate_left_recursion e;
-    e.elimination(&r);
-    First_Follow_calc calc(r);
+int main(int argc, char **argv) {
+	InputReader r;
+	r.printing();
+	cout << "################################" << endl;
+	Eliminate_left_recursion e;
+	e.elimination(&r);
+	cout << "################################" << endl;
+	r.token_in_cal();
+	First_Follow_calc calc(r);
 
-//     TableBuilder t;
-//     if(t.buildTable(calc, r)){
-//     	ifstream is("tokens.txt");
-//     	 string input ;
-//     	 vector<string> tokens;
-//     	  while(!is.eof()){
-//     	   	getline(is,input);
-//     	   	tokens.push_back(input);
-//         }
-//    	   is.close();
-//    	   vector<string> transitions;
-//    	   r.terminal.erase(r.terminal.begin() , r.terminal.begin()+1);
-//    	   r.terminal.push_back("$");
-//    	   for(int i = 0 ; i < r.terminal.size();i++){
-//    		   cout << "___" << r.terminal[i] << endl;
-//    	   }
-//    	   Matcher m = Matcher(tokens , r.terminal/* {"(" , ")" , "*" , "+" , "id" , "$"}*/ , t.getTable(),r.start);
-//     }
+	TableBuilder t;
+	if (t.buildTable(calc, r)) {
+		ifstream is("tokens.txt");
+		string input;
+		vector<string> tokens;
+		while (!is.eof()) {
+			getline(is, input);
+			tokens.push_back(input);
+		}
+		is.close();
+		vector<string> transitions;
+		r.terminal.push_back("$");
+		/*
+		r.terminal.erase(r.terminal.begin(), r.terminal.begin() + 1);
+		for (int i = 0; i < r.terminal.size(); i++) {
+			cout << "___" << r.terminal[i] << endl;
+		}
+		*/
+		//Matcher m = Matcher(tokens,r.terminal/* {"(" , ")" , "*" , "+" , "id" , "$"}*/,t.getTable(), r.start);
 
-    
-    
-    
+	}
+
 //     for(int i = 0; i < 70; i++)
 //       cout << "#";
 //     cout << "robert code\n";
@@ -49,7 +53,6 @@ int main ( int argc, char **argv ) {
 //       }
 //       cout << "END OF " << (i.first) << "\n\n";
 //     }
-
 
 //     for ( int i = 0; i < 70; i++ )
 //         cout << "#";
@@ -78,5 +81,5 @@ int main ( int argc, char **argv ) {
 //         cout << "\nEND OF " << ( i.first ) << "\n\n";
 //     }
 
-    return 0;
+	return 0;
 }

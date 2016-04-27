@@ -18,9 +18,10 @@ public:
 	//set the production map
 	void setMap(map<string, vector<vector<string> > > p);
 	bool is_terminal(string str);
+	void token_in_cal();
 	vector<string> terminal;
 	vector<string> nonterminal;
-	map<string, vector<string> > token_in; //NEED FIXING
+	map<string, vector<string> > token_in;
 	bool is_start(string s);
 	void printing();
 	string start;

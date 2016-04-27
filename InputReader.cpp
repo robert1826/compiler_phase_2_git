@@ -94,10 +94,12 @@ vector<string> InputReader::tokinze(string str, char* c, string origin) {
 		if (size != v[j].length()) {
 			nonter.insert(v[j]);
 		}
+		/*
 		else {
 			token_in[v[j]].push_back(origin);
 			//cout<<"*****"<<origin<<"<="<<v[j]<<endl;
 		}
+		*/
 	}
 	/*
 	 for (i = 0; i < v.size(); ++i) {
@@ -132,7 +134,7 @@ void InputReader::setMap(map<string, vector<vector<string> > > p) {
 void InputReader::printing(){
     for(string nt:nonterminal)
     {
-        cout << nt << "\t";
+        cout<<"# " << nt << " = ";
         vector<vector<string>> vv=productions[nt];
         // cout << "size of productions "<< vv.size() << endl;
         for(vector <string> v: vv )
@@ -141,9 +143,17 @@ void InputReader::printing(){
             {
                 cout<<v[k]<< " ";
             }
-            cout << "\t";
+            cout << "| ";
         }
         cout << endl;
     }
 }
-
+void InputReader::token_in_cal(){
+	for (auto p : productions) {
+		vector< vector<string> > v = p.second;
+		for (auto vv : v) {
+			for(string s:vv)
+				token_in[s].push_back(p.first);
+		}
+	}
+}
