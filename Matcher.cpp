@@ -30,14 +30,16 @@ Matcher::Matcher(vector<string> tok , vector<string> trans , map< string , vecto
 			if(table.find(state)==table.end()){
 				cout << state << "____" << tokens[i] << endl;
 				if(state != tokens[i] && state!="&"){
-					output.push_back("Error: missing " + state);
+					string s = printStack();
+					output.push_back(s+ "\t" + "Error: missing " + state);
 				}
 				else if (state!="&"){
 					i++;
 				}
 			}
 			else if(table[state][index].size()/*next_states.size()*/==0 || index ==-1){
-				output.push_back("Error: Illegal " + state);
+				string s = printStack();
+				output.push_back(s + "\t" +"Error: Illegal " + state);
 				if(i!=tokens.size()-1){
 					i++;
 					state_stack.push(state);
@@ -53,7 +55,8 @@ Matcher::Matcher(vector<string> tok , vector<string> trans , map< string , vecto
 					next += table[state][index][j]/*next_states[j]*/;
 					if(j!=table[state][index].size()/*next_states.size()*/-1)next+= " ";
 				}
-				output.push_back(next);
+				string s = printStack();
+				output.push_back(s + "\t" + next);
 				for(int j = table[state][index].size()/*next_states.size()*/-1 ; j > -1 ; j--){
 
 					if(state!="&")state_stack.push(table[state][index]/*next_states*/[j]);
@@ -63,10 +66,12 @@ Matcher::Matcher(vector<string> tok , vector<string> trans , map< string , vecto
 		}
 		else {
 			if(i != tokens.size()-1 || tokens[i]!="$"){
-				output.push_back("ERROR");
+				string s = printStack();
+				output.push_back(s+ "\t" + "ERROR");
 			}
 			else if(state == tokens[i]){
-				output.push_back("accept");
+				string s = printStack();
+				output.push_back(s + "\t" + "accept");
 				i = tokens.size()+1;
 			}
 		}
@@ -98,4 +103,19 @@ int Matcher::get_transition_index(string transition){
 		}
 	}
 	return index;
+}
+
+string Matcher::printStack(){
+	string s= "";
+	stack<string> temp;
+	while(!state_stack.empty()){
+		temp.push(state_stack.top());
+		state_stack.pop();
+	}
+	while(!temp.empty()){
+			s+= temp.top();
+			state_stack.push(temp.top());
+			temp.pop();
+	}
+	return s;
 }

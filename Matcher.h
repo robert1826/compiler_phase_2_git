@@ -21,6 +21,7 @@ public:
 	vector<string> tokens;
 	void print_output();
 	int get_transition_index(string transition);
+	string printStack();
 };
 
 #endif /* COMPILER_PHASE_2_GIT_MATCHER_H_ */
