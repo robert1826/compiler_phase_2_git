@@ -52,7 +52,7 @@ void Eliminate_left_recursion::elimination(InputReader *r)
     }
     r->setMap(productions);
     r->nonterminal=nonTerminals;
-    r->printing();
+    //r->printing();
 
 }
 

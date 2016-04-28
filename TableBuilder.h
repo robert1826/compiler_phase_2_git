@@ -1,7 +1,6 @@
 #define _GLIBCXX_USE_CXX11_ABI 0
 
 #include "InputReader.h"
-#include "Lexical_Dummy.h"
 #include <bits/stdc++.h>
 using namespace std;
 #ifndef TABLEBUILDER_H

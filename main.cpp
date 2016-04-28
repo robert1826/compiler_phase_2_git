@@ -4,20 +4,21 @@
 #include "First_Follow_calc.h"
 #include "TableBuilder.h"
 #include "Matcher.h"
+#include "Factorize.h"
 #include "Eliminate_left_recursion.h"
 
 using namespace std;
 
 int main(int argc, char **argv) {
 	InputReader r;
-	r.printing();
-	cout << "################################" << endl;
+	//r.printing();cout << "################################" << endl;
 	Eliminate_left_recursion e;
 	e.elimination(&r);
-	cout << "################################" << endl;
+	Factorize f;
+	f.fact(&r);
+	//r.printing();cout << "################################" << endl;
 	r.token_in_cal();
 	First_Follow_calc calc(r);
-
 	TableBuilder t;
 	if (t.buildTable(calc, r)) {
 		ifstream is("tokens.txt");
@@ -30,14 +31,18 @@ int main(int argc, char **argv) {
 		is.close();
 		vector<string> transitions;
 		r.terminal.push_back("$");
-		/*
-		r.terminal.erase(r.terminal.begin(), r.terminal.begin() + 1);
-		for (int i = 0; i < r.terminal.size(); i++) {
-			cout << "___" << r.terminal[i] << endl;
+		//cout<<r.terminal[0];
+		//r.terminal.erase(r.terminal.begin(), r.terminal.begin() + 1);
+		for (int i = 0; i < r.terminal.size(); ++i) {
+			if(r.terminal[i]=="&"){
+				r.terminal.erase(r.terminal.begin()+i, r.terminal.begin()+ i + 1);
+			}
 		}
-		*/
-		//Matcher m = Matcher(tokens,r.terminal/* {"(" , ")" , "*" , "+" , "id" , "$"}*/,t.getTable(), r.start);
-
+		/* for (int i = 0; i < r.terminal.size(); i++) {
+		 cout << "___" << r.terminal[i] << endl;
+		 }
+		 */
+		Matcher m = Matcher(tokens,r.terminal,t.getTable(), r.start);
 	}
 
 //     for(int i = 0; i < 70; i++)

@@ -122,13 +122,14 @@ bool TableBuilder:: buildTable(First_Follow_calc f,InputReader in)
                         {
                             if (cell.size()==0)
                                 cell.push_back("synch");
+                            /*
                             else
                             {
                                 cout<<"5.error grammar is ambiguous\n";
                                 cout<< nt <<"\n";
                                 cout<< t <<"\n";
                                 return false;
-                            }
+                            }*/
                         }
                     }
                 }
